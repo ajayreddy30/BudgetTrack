@@ -1,108 +1,184 @@
-# BudgetTrack
+BudgetTrack
 
-A clean, responsive personal expense tracker built with React. Add income and
-expenses, see where your money goes with charts, keep a monthly budget in
-check, and get plain-language spending insights — all stored locally in your
-browser, no backend required.
+A clean and responsive personal expense tracker built with React.
 
-## Overview
+BudgetTrack helps users manage their income and expenses, track monthly spending, set a budget, and understand their spending habits through charts and simple insights.
+ 
+---
 
-BudgetTrack is a fresher-portfolio project designed to look and behave like a
-real product rather than a tutorial CRUD app. Every number on screen —
-totals, charts, insights — is computed live from the transactions you enter.
+🔗 Live Demo: https://budget-track-teal.vercel.app/
 
-## Features
+Features:
 
-- Add, edit and delete transactions (income or expense) with validation
-- Dashboard with balance, income, expense and this-month summary cards
-- Budget Health: set a monthly budget and see a live progress bar and status
-- Spending Insights: auto-generated observations from your real data
-- Transaction history with search, filters (type/category/payment/date) and
-  multi-column sorting
-- Pagination (10 per page) so long histories stay fast and readable
-- Category breakdown (pie chart) and monthly spending trend (line chart) via
-  Recharts
-- Monthly summary with a selectable month
-- CSV export
-- Light/dark theme, persisted
-- Fully responsive: sidebar nav on desktop, bottom nav + floating add button
-  on mobile
-- Data persists in `localStorage` — refreshing the page keeps your data
-- Sample data on first visit so the dashboard isn't empty, easily cleared
+- Add, edit, and delete income and expense transactions
+- Input validation for transaction details
+- Dashboard showing:
+  - Current balance
+  - Total income
+  - Total expenses
+  - This month's spending
+- Set a monthly budget and track spending progress
+- Budget status updates based on current spending
+- Automatic spending insights based on transaction data
+- Search and filter transactions by:
+  - Type
+  - Category
+  - Payment method
+  - Date
+- Multi-column sorting and pagination
+- Category-wise expense breakdown using a pie chart
+- Monthly spending trend using a line chart
+- Selectable monthly summary
+- Export transaction data as CSV
+- Light and dark theme
+- Fully responsive design for desktop and mobile
+- Sample data available on first visit
+- All data is stored locally in the browser.
 
-## Tech Stack
+---
 
-- React 18 (Vite, no TypeScript)
-- Recharts for charts
-- lucide-react for icons
-- Plain CSS with custom properties for theming (no CSS framework)
-- Browser `localStorage` for persistence — no backend in V1
+ Tech Stack
 
-## Project Structure
+- React 18
+- Vite
+- Recharts
+- lucide-react
+- Plain CSS
+- Browser LocalStorage
 
-```
+No backend or database is required for the current version.
+
+---
+
+ Responsive Design
+
+BudgetTrack is designed to work smoothly across different screen sizes.
+
+- Desktop: Sidebar navigation
+- Mobile: Bottom navigation with a floating add button
+
+The interface adapts to provide a simple and easy-to-use experience on both desktop and mobile devices.
+
+---
+
+📊 How It Works
+
+Every value shown in the application is calculated from the user's transactions.
+
+User adds transactions
+        ↓
+Data is stored in LocalStorage
+        ↓
+React updates the application state
+        ↓
+Dashboard totals, charts, budget progress,
+and insights are calculated automatically
+
+Refreshing the page does not remove the data.
+
+---
+
+Data Storage
+
+BudgetTrack uses browser LocalStorage for data persistence.
+
+All LocalStorage operations are handled through a central storage utility instead of directly accessing "window.localStorage" from components.
+
+This includes functions for:
+
+- Transactions
+- Budget
+- Theme
+- Clearing application data
+
+Error handling is included so missing or invalid stored data falls back to safe default values.
+
+---
+
+📂 Project Structure
+
 src/
-├── components/     Reusable UI pieces (forms, cards, charts, nav, dialogs)
-├── pages/          Dashboard, Transactions, Analytics, Settings
-├── hooks/          useLocalStorage — generic persistence hook
-├── utils/          calculations, dateUtils, insights, csvExport, storage
-├── data/           category lists + sample data
-├── App.jsx         Top-level state and page routing
-├── main.jsx        React entry point
-└── index.css       Design tokens + all styling
-```
+├── components/     # Reusable UI components
+├── pages/          # Dashboard, Transactions, Analytics, Settings
+├── hooks/          # Custom React hooks
+├── utils/          # Calculations, insights, dates, CSV and storage logic
+├── data/           # Categories and sample data
+├── App.jsx         # Main application component
+├── main.jsx        # Application entry point
+└── index.css       # Global styles and theme variables
 
-## How to Run
+---
 
-```bash
+Getting Started
+
+Prerequisites
+
+Make sure you have Node.js and npm installed.
+
+Installation
+
+Clone the repository:
+
+git clone <your-repository-url>
+
+Go to the project folder:
+
+cd budgettrack
+
+Install dependencies:
+
 npm install
+
+Start the development server:
+
 npm run dev
-```
 
-Then open the printed local URL (usually `http://localhost:5173`).
+Open the local URL shown in your terminal.
 
-## Build
+---
 
-```bash
+Build for Production
+
 npm run build
-npm run preview   # optional: preview the production build locally
-```
 
-## LocalStorage Architecture
+To preview the production build locally:
 
-All reads/writes go through `src/utils/storage.js`, which exposes named
-functions (`getTransactions`, `saveTransactions`, `getBudget`, `saveBudget`,
-`getTheme`, `saveTheme`, `clearAllData`) rather than having components touch
-`window.localStorage` directly. Every read is wrapped in a try/catch so
-malformed or missing data never crashes the app — it just falls back to a
-sane default.
+npm run preview
 
-## Deployment (Netlify)
+---
 
-1. Push this project to a GitHub repository.
-2. In Netlify: **Add new site → Import an existing project** and pick the repo.
-3. Build command: `npm run build`
-4. Publish directory: `dist`
-5. Deploy. No environment variables or redirects are needed since this is a
-   single-page app with no client-side routing.
+🚀 Future Improvements
 
-## Future Improvements (V2)
+The current version is intentionally built as a frontend-only application. Future versions may include:
 
-This is intentionally a frontend-only V1. A natural next step is to replace
-`localStorage` with a real backend:
-
-```
-React frontend
-    ↓  REST calls
-Spring Boot REST API
-    ↓
-Spring Data JPA / Hibernate
-    ↓
-MySQL
-```
-
-Planned V2 additions:
-- User accounts and authentication (JWT)
-- Cloud sync across devices
+- User authentication
+- Cloud data synchronization
+- Backend REST API using Spring Boot
+- MySQL database integration
 - Recurring transactions
-- Notifications/reminders near budget limits
+- Budget notifications and reminders
+- Multi-device access
+
+Planned architecture:
+
+React Frontend
+      ↓
+Spring Boot REST API
+      ↓
+Spring Data JPA / Hibernate
+      ↓
+MySQL Database
+
+---
+
+👨‍💻 Why I Built This Project
+
+I wanted to build something that feels more like a real product than a basic CRUD project.
+
+Instead of only storing and displaying transactions, BudgetTrack uses the entered data to generate live dashboard totals, spending charts, budget progress, and useful insights.
+
+The project helped me practice React component design, state management, reusable utilities, data persistence, responsive UI design, and building features around real user needs.
+
+---
+
+⭐ If you found this project useful, consider giving the repository a star!
