@@ -178,7 +178,3 @@ I wanted to build something that feels more like a real product than a basic CRU
 Instead of only storing and displaying transactions, BudgetTrack uses the entered data to generate live dashboard totals, spending charts, budget progress, and useful insights.
 
 The project helped me practice React component design, state management, reusable utilities, data persistence, responsive UI design, and building features around real user needs.
-
----
-
-⭐ If you found this project useful, consider giving the repository a star!
